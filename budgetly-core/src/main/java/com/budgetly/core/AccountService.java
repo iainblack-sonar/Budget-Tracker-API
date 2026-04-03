@@ -38,12 +38,7 @@ public class AccountService {
 
     @Transactional(readOnly = true)
     public AccountEntity getAccountById(Long userId, Long accountId) {
-        return accountRepository
-                .findByIdAndUserId(accountId, userId)
-                .orElseThrow(
-                        () ->
-                                new ResourceNotFoundException(
-                                        "Account not found with id: " + accountId));
+        return findAccountByIdAndUserId(userId, accountId);
     }
 
     @Transactional(readOnly = true)
@@ -59,7 +54,7 @@ public class AccountService {
             AccountType type,
             BigDecimal balance,
             String currency) {
-        AccountEntity account = getAccountById(userId, accountId);
+        AccountEntity account = findAccountByIdAndUserId(userId, accountId);
 
         if (name != null) {
             account.setName(name);
@@ -80,8 +75,17 @@ public class AccountService {
 
     @Transactional
     public void deleteAccount(Long userId, Long accountId) {
-        AccountEntity account = getAccountById(userId, accountId);
+        AccountEntity account = findAccountByIdAndUserId(userId, accountId);
         accountRepository.delete(account);
+    }
+
+    private AccountEntity findAccountByIdAndUserId(Long userId, Long accountId) {
+        return accountRepository
+                .findByIdAndUserId(accountId, userId)
+                .orElseThrow(
+                        () ->
+                                new ResourceNotFoundException(
+                                        "Account not found with id: " + accountId));
     }
 
     private void validateBalance(AccountType type, BigDecimal balance) {
