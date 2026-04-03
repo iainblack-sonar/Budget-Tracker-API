@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -e
+
+echo "Running Spotless formatting check..."
+./mvnw spotless:check -q
+
+echo "Formatting check passed."

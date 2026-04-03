@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -e
+
+echo "Running tests before push..."
+./mvnw test -q
+
+echo "All tests passed."
