@@ -80,7 +80,13 @@ public class AccountService {
 
     @Transactional
     public void deleteAccount(Long userId, Long accountId) {
-        AccountEntity account = getAccountById(userId, accountId);
+        AccountEntity account =
+                accountRepository
+                        .findByIdAndUserId(accountId, userId)
+                        .orElseThrow(
+                                () ->
+                                        new ResourceNotFoundException(
+                                                "Account not found with id: " + accountId));
         accountRepository.delete(account);
     }
 
