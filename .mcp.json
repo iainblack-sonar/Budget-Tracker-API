@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "sonarqube": {
+      "env": {
+        "SONAR_SQ_PROJECT_KEY": "iainblack-sonar_Budget-Tracker-API"
+      }
+    }
+  }
+}

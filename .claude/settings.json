@@ -1,0 +1,7 @@
+{
+  "env": {
+    "SONAR_SQ_PROJECT_KEY": "iainblack-sonar_Budget-Tracker-API"
+  },
+  "autoMemoryEnabled": true,
+  "autoDreamEnabled": true
+}
