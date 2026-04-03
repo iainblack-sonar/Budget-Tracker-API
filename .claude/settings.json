@@ -3,5 +3,19 @@
     "SONAR_SQ_PROJECT_KEY": "iainblack-sonar_Budget-Tracker-API"
   },
   "autoMemoryEnabled": true,
-  "autoDreamEnabled": true
+  "autoDreamEnabled": true,
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "statusMessage": "Running SonarQube analysis...",
+            "command": "bash /Users/Iain.black/Projects/Personal/Budget-Tracker-API/.claude/hooks/sonar-analysis.sh"
+          }
+        ]
+      }
+    ]
+  }
 }

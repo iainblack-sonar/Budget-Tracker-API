@@ -12,10 +12,6 @@
 - Call `get_current_architecture` to understand the current module structure
 - Trace call impact using `get_upstream_call_flow` and `get_downstream_call_flow`
 
-## After generating or modifying code, you SHOULD:
-
-- Run `run_advanced_code_analysis` on changed files to catch quality/security issues early
-
 ## Guidelines mode selection
 
 | Situation | Mode |
